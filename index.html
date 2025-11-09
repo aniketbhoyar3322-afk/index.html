@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Happy Birthday Vaibhuu 💖</title>
+<style>
+  body {
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+    background: linear-gradient(135deg, #ffd6eb, #ffb6c1);
+    color: #fff;
+    text-align: center;
+    overflow-x: hidden;
+  }
+
+  h1 {
+    font-size: 2em;
+    margin-top: 60px;
+    font-weight: bold;
+    font-style: italic;
+    animation: titleGlow 2s ease-in-out infinite alternate;
+  }
+
+  @keyframes titleGlow {
+    from { text-shadow: 0 0 8px #fff, 0 0 15px #ff69b4; }
+    to { text-shadow: 0 0 15px #fff, 0 0 30px #ff1493; }
+  }
+
+  #message {
+    width: 85%;
+    margin: 100px auto;
+    font-size: 1.4em;
+    line-height: 1.8em;
+    font-style: italic;
+    font-weight: bold;
+    color: #fff;
+    text-align: center;
+  }
+
+  .line {
+    opacity: 0;
+    white-space: pre-wrap;
+  }
+
+  .show {
+    opacity: 1;
+    transition: opacity 1s ease-in;
+  }
+
+  /* Heart rain */
+  .heart {
+    position: fixed;
+    top: -10px;
+    color: #ff3e96;
+    font-size: 24px;
+    animation: fall linear forwards;
+    z-index: 0;
+  }
+
+  @keyframes fall {
+    to {
+      transform: translateY(100vh) rotate(360deg);
+      opacity: 0;
+    }
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Typing effect caret */
+  .caret {
+    display: inline-block;
+    width: 8px;
+    background: #fff;
+    margin-left: 3px;
+    animation: blink 0.6s infinite alternate;
+  }
+
+  @keyframes blink {
+    from { opacity: 1; }
+    to { opacity: 0; }
+  }
+</style>
+</head>
+<body>
+  <h1 id="title">Vaibhuuu... 💖 HAPPY BIRTHDAY 💖</h1>
+  <div id="message"></div>
+
+  <audio autoplay loop>
+    <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_0f4c986ede.mp3?filename=romantic-piano-ambient-110624.mp3" type="audio/mpeg">
+  </audio>
+
+  <script>
+    const messageLines = [
+      "I am soo happy that you came into my lifee my sweet sugar honey pie cutie koochi poochi my gurl my wife my soulmate devi ji...🤌🏻🤌🏻🛐🛐🧿🧿",
+      "Najar naaa laago Konachi maja bala la🧿🧿. Maji worlds most beautiful sundar vaibhuuuu 💞",
+      "Even sundar ani beautiful shabd pn enough ny tula describe karayla 😭",
+      "Tu jevda deserve karte techa peksha pn jasta love dyaycha ahe mala tula 🛐💌",
+      "I am always with you and I am soo happy because of you 🫂",
+      "You are the reason I have reason in my life 🥹💖",
+      "Love you soooo muchhhh meri cute cute vaibhuuuu 💕💗",
+    ];
+
+    const container = document.getElementById("message");
+
+    function typeLine(line, idx) {
+      return new Promise((resolve) => {
+        const p = document.createElement("div");
+        p.classList.add("line");
+        container.appendChild(p);
+        p.classList.add("show");
+
+        let i = 0;
+        const caret = document.createElement("span");
+        caret.classList.add("caret");
+        p.appendChild(caret);
+
+        const interval = setInterval(() => {
+          p.textContent = line.slice(0, i);
+          p.appendChild(caret);
+          i++;
+          if (i > line.length) {
+            clearInterval(interval);
+            caret.remove();
+            resolve();
+          }
+        }, 50); // typing speed (lower = faster)
+      });
+    }
+
+    async function showAllLines() {
+      for (let i = 0; i < messageLines.length; i++) {
+        await typeLine(messageLines[i]);
+        await new Promise((res) => setTimeout(res, 4000)); // wait before next line
+      }
+    }
+
+    showAllLines();
+
+    // Heart rain effect
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.classList.add("heart");
+      heart.textContent = "💖";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = 3 + Math.random() * 3 + "s";
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 4000);
+    }
+
+    setInterval(createHeart, 200);
+  </script>
+</body>
+</html>
