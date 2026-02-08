@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Dear KajuKatli 💖</title>
+    <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f7e3e3;
+            color: #333;
+            text-align: center;
+            padding: 30px;
+            overflow: hidden;
+            position: relative;
+            height: 100vh;
+        }
+
+        header {
+            background-color: #ff99cc;
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+
+        .thoughts-container {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            max-width: 600px;
+            margin: 0 auto;
+            display: none;
+            position: absolute;
+            top: 40%;
+            left: 50%;
+            transform: translateX(-50%);
+            height: 60%;
+            overflow-y: auto; /* Ensure scrolling */
+        }
+
+        .thoughts-container h2 {
+            font-size: 28px;
+            color: #ff69b4;
+            margin-bottom: 20px;
+        }
+
+        .thoughts-container p {
+            font-size: 18px;
+            color: #555;
+            margin-bottom: 20px;
+            line-height: 1.6;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            word-wrap: break-word;
+        }
+
+        footer {
+            margin-top: 40px;
+            font-size: 14px;
+            color: #777;
+        }
+
+        /* Heart Rain */
+        @keyframes heartRain {
+            0% { top: -10%; opacity: 1; }
+            100% { top: 100%; opacity: 0; }
+        }
+
+        .heart {
+            position: absolute;
+            font-size: 2rem;
+            animation: heartRain 3s infinite;
+            pointer-events: none;
+        }
+
+        /* Envelope Popup Style */
+        .envelope {
+            width: 150px;
+            height: 100px;
+            background-color: #fff;
+            border: 2px solid #ff99cc;
+            border-radius: 10px;
+            position: absolute;
+            top: 60%; /* Positioned lower */
+            left: 50%;
+            transform: translate(-50%, -50%);
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            flex-direction: column;
+            padding: 10px;
+            visibility: visible; /* Ensures it's initially visible */
+            transition: visibility 0.5s ease-in-out;
+        }
+
+        .envelope::before {
+            content: "";
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            right: 10px;
+            height: 40px;
+            background-color: #ff99cc;
+            border-radius: 10px;
+        }
+
+        .envelope .message {
+            color: #ff69b4;
+            font-size: 16px;
+            font-weight: bold;
+            margin-top: 15px;
+            margin-bottom: 10px; /* Adjusted to move the text down a bit */
+        }
+
+        .envelope.open {
+            visibility: hidden; /* Hides envelope after opening */
+        }
+
+        /* Letter Content (hidden by default) */
+        .letter {
+            display: none;
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            margin: 0 auto;
+            max-height: 400px;
+            overflow-y: scroll; /* Enable scrolling in letter */
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>My Dear KajuKatli 💖</h1>
+        <p>For the one who makes my heart go 💘</p>
+    </header>
+
+    <!-- Envelope Div (Starts in popup mode) -->
+    <div class="envelope" onclick="openLetter()">
+        <div class="top"></div>
+        <div class="message" id="tapMessage">Tap to Open 💌</div>
+    </div>
+
+    <!-- Letter Content (starts hidden) -->
+    <div class="letter">
+        <h2>Thoughts That Hit Different</h2>
+        <p>"You know, sometimes when I’m with you, it feels like everything around me disappears, like the world’s in pause and it’s just us. I mean, seriously, how is it that every moment with you feels so much better than anything else? It’s like all the doubts and fears vanish when you’re near me, and honestly, that’s all I’ve ever wanted – peace and love, you and me. Forever. Can’t even imagine it any other way. I know, I’m getting all sappy right now, but this is real, you make me feel real things 🥺❤️"</p>
+        <p>"I remember the first time we talked. It felt like I’d known you for years, like everything was so comfortable. But then, it wasn’t just comfort, it was more, and I realized, whoa, I think I’m falling for you. But I didn’t know how to say it. I still don’t know how to say it properly sometimes, but every moment spent with you feels like I’ve known you forever. No cap, you’re the best part of my life, and I hope you know that, always 😌💖"</p>
+        <p>"You’re my favorite hello and my hardest goodbye. I know I might mess up, or not say the right thing, but my heart’s always in the right place. And sometimes, I wish I could say these things in a way that would make you feel how much you mean to me. But for now, all I can do is hope you feel it, the way I do. With every heartbeat, I just want you to know I’m here, I’m always here for you, no matter what. You're my world 🌍💯"</p>
+        <p>"It’s funny, isn’t it? How people come into your life, and some leave an imprint, and others leave a mark. You? You’re like a permanent piece of my soul now. You make everything worth it, even the hard stuff. I can’t even imagine what I’d do without you now. You’ve become my everything, my constant. Never thought I’d find someone like you, but I’m sure as hell glad I did. Forever grateful 💖🥰"</p>
+    </div>
+
+    <footer>
+        <p>Made with all the feels & love 🥰 | Stay sweet like KajuKatli 😘</p>
+    </footer>
+
+    <!-- Heart Rain Animation -->
+    <div id="heartRain"></div>
+
+    <script>
+        // Function to open the letter (show the content inside envelope)
+        function openLetter() {
+            document.querySelector('.envelope').classList.add('open');
+            document.querySelector('.letter').style.display = 'block';
+            document.getElementById('tapMessage').style.display = 'none'; // Hide "Tap to Open"
+        }
+
+        // Function to generate hearts falling from the top
+        function createHearts() {
+            let heartContainer = document.getElementById('heartRain');
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + 'vw';  // Random position across the screen
+            heart.style.animationDuration = Math.random() * 2 + 3 + 's'; // Random duration
+            heartContainer.appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove(); // Remove heart after animation completes
+            }, 5000); // Remove after 5 seconds
+        }
+
+        // Generate hearts every 200ms for a nice rain effect
+        setInterval(createHearts, 200);
+
+        // Show the thoughts container when clicking
+        document.body.addEventListener('click', () => {
+            const thoughts = document.querySelector('.thoughts-container');
+            thoughts.style.display = 'block';
+            const paragraphs = thoughts.getElementsByTagName('p');
+            let i = 0;
+
+            // Animate each paragraph into view
+            setInterval(() => {
+                if (i < paragraphs.length) {
+                    paragraphs[i].style.opacity = 1;
+                    i++;
+                }
+            }, 1000);
+        });
+    </script>
+
+</body>
+</html>
